@@ -15,7 +15,7 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:4000/userroutes1/signup', {
+      const response = await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/signup', {
         name,
         email,
         phone,
