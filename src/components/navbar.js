@@ -9,14 +9,8 @@ import toast from 'react-hot-toast';
 
 function Navbar() {
   const { profile } = useAuth();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = Cookies.get('token');
-    setIsAuthenticated(!!token);
-  }, []);
 
   const handleLogout = async () => {
     try {
@@ -24,7 +18,6 @@ function Navbar() {
       Cookies.remove('token');
       toast.success(response.data.message || "Logout successful");
       window.location.reload();
-      setIsAuthenticated(false);
       navigate('/login');
     } catch (error) {
       console.error('Logout failed:', error);
@@ -110,7 +103,7 @@ function Navbar() {
 
         {/* Desktop User Profile/Logout Section */}
         <div className="hidden lg:flex items-center space-x-4">
-          {isAuthenticated ? (
+          {profile ? (
             <>
               <button
                 onClick={handleLogout}
@@ -118,7 +111,7 @@ function Navbar() {
               >
                 Logout
               </button>
-              {profile && profile.role === 'admin' && (
+              {profile.role === 'admin' && (
                 <Link
                   to="/allusers"
                   className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition duration-300 ease-in-out"
@@ -211,7 +204,7 @@ function Navbar() {
               </Link>
             </li>
             <div className="mt-6 flex items-center justify-between">
-              {isAuthenticated ? (
+              {profile ? (
                 <button
                   onClick={handleLogout}
                   className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition duration-300 ease-in-out"
