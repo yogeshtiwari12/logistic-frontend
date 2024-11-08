@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const fetchMyProfile = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/userroutes1/getmyprofile', {
+                const response = await axios.get('https://logistic-backend-mnqu.onrender.com/getmyprofile', {
                     withCredentials: true,
                 });
                 console.log(response.data.user)
