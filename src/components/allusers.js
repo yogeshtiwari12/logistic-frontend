@@ -11,7 +11,7 @@ function AllUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('https://logistic-backend-mnqu.onrender.com/getallusers', {
+        const response = await axios.get('https://logistic-backend-mnqu.onrender.com/userroutes1/getallusers', {
           withCredentials: true,
         });
         setUsers(response.data.users);
