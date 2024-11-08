@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 function Navbar() {
   const { profile } = useAuth();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu toggle
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function Navbar() {
   };
 
   return (
-    <div className="relative w-full bg-white shadow-lg bg--400">
+    <div className="relative w-full bg-white shadow-lg z-50">
       <div className="mx-auto flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         {/* Logo Section */}
         <div className="text-md font-bold text-gray-800 text-2xl">
@@ -57,14 +57,12 @@ function Navbar() {
                 About
               </Link>
             </li>
-            
-            {/* Conditionally Render Services if user is authenticated */}
             {profile && (
               <li className="relative group">
                 <button className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                   Services
                 </button>
-                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300 z-50">
+                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300">
                   <ul className="py-2">
                     <li><Link to="/fright" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Air Freight Service</Link></li>
                     <li><Link to="/sea_fright_services" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Sea Freight Services</Link></li>
@@ -78,16 +76,29 @@ function Navbar() {
                 </div>
               </li>
             )}
-
-            <li>
-              <Link to="/employees" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
-                Our Employees
-              </Link>
-            </li>
-            <li>
-              <Link to="/tools" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
+            <li className="relative group">
+              <button className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                 Tools
-              </Link>
+              </button>
+              <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300">
+                <ul className="py-2">
+                  <li>
+                    <a href="https://dilas.ca/commercial-shipments/" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">
+                      Commercial
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://dilas.ca/personal-agreement/" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">
+                      Personal
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://dilas.ca/brokerage-fees-calculator/" target="_blank" rel="noopener noreferrer" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">
+                      Fees Calculator
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li>
               <Link to="/contact" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
@@ -103,15 +114,14 @@ function Navbar() {
             <>
               <button
                 onClick={handleLogout}
-                className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+                className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition duration-300 ease-in-out"
               >
                 Logout
               </button>
-
               {profile && profile.role === 'admin' && (
                 <Link
                   to="/allusers"
-                  className="rounded-md border border-green-600 px-4 py-2 text-sm font-semibold text-green-600 hover:bg-green-600 hover:text-white transition duration-300 ease-in-out"
+                  className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition duration-300 ease-in-out"
                 >
                   Dashboard
                 </Link>
@@ -127,7 +137,7 @@ function Navbar() {
           ) : (
             <Link
               to="/login"
-              className="rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+              className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition duration-300 ease-in-out"
             >
               Login
             </Link>
@@ -159,8 +169,8 @@ function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {isMenuOpen && (
-        <div className="lg:hidden absolute top-0 left-0 w-full bg-white shadow-lg z-50">
-          <ul className="space-y-4 px-4 py-6">
+        <div className="lg:hidden absolute top-0 left-0 w-full bg-white shadow-lg z-50 p-6">
+          <ul className="space-y-4">
             <li>
               <Link to="/" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                 Home
@@ -171,14 +181,12 @@ function Navbar() {
                 About
               </Link>
             </li>
-            
-            {/* Conditionally Render Services in Mobile Menu if user is authenticated */}
             {profile && (
               <li className="relative group">
                 <button className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                   Services
                 </button>
-                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300 z-50">
+                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300">
                   <ul className="py-2">
                     <li><Link to="/fright" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Air Freight Service</Link></li>
                     <li><Link to="/sea_fright_services" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Sea Freight Services</Link></li>
@@ -192,12 +200,41 @@ function Navbar() {
                 </div>
               </li>
             )}
-
+            <li>
+              <Link to="/tools" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
+                Tools
+              </Link>
+            </li>
             <li>
               <Link to="/contact" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                 Contact
               </Link>
             </li>
+            <div className="mt-6 flex items-center justify-between">
+              {isAuthenticated ? (
+                <button
+                  onClick={handleLogout}
+                  className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition duration-300 ease-in-out"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link
+                  to="/login"
+                  className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition duration-300 ease-in-out"
+                >
+                  Login
+                </Link>
+              )}
+              {profile && profile.role === 'admin' && (
+                <Link
+                  to="/allusers"
+                  className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition duration-300 ease-in-out"
+                >
+                  Dashboard
+                </Link>
+              )}
+            </div>
           </ul>
         </div>
       )}

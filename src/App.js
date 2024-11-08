@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/navbar.js';
 import Home from './components/pages/home.js';
 import About from './components/pages/about.js';
@@ -18,35 +18,36 @@ import Profile from './components/pages/profile.js';
 import Allusers from './components/allusers.js';
 import { useAuth } from './components/context/context.js';
 
-
+const ProtectedRoute = ({ children }) => {
+  const { profile } = useAuth();
+  if (!profile) {
+    return <Navigate to="/login" replace />;
+  }
+  return children;
+};
 
 function App() {
-  const {profile} = useAuth();
+  
+
   return (
     <Router>
       <Navbar />
-    
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/fright" element={<Fright />} />
-        <Route path='/sea_fright_services' element={<Sea_fright_service/>}/>
-        <Route path='/train_fright_service' element={<Train_fright_service/>}/>
-        <Route path='/market_entry_service' element={<Market_entry_service/>}/>
-        <Route path='/export_premium_vehicle' element={<Export_premium_vehicle/>} />
-        <Route path='/wine_export' element={<Wine_export/>}/>
-        <Route path='/project_cargo_services' element={<Project_cargo_services/>}/>
-        <Route path='/warehousing_service' element={<Warehousing_service/>}/>
+        <Route path="/about" element={ <About /> } />
+        <Route path="/fright" element={<ProtectedRoute><Fright /></ProtectedRoute>} />
+        <Route path='/sea_fright_services' element={<ProtectedRoute><Sea_fright_service /></ProtectedRoute>} />
+        <Route path='/train_fright_service' element={<ProtectedRoute><Train_fright_service /></ProtectedRoute>} />
+        <Route path='/market_entry_service' element={<ProtectedRoute><Market_entry_service /></ProtectedRoute>} />
+        <Route path='/export_premium_vehicle' element={<ProtectedRoute><Export_premium_vehicle /></ProtectedRoute>} />
+        <Route path='/wine_export' element={<ProtectedRoute><Wine_export /></ProtectedRoute>} />
+        <Route path='/project_cargo_services' element={<ProtectedRoute><Project_cargo_services /></ProtectedRoute>} />
+        <Route path='/warehousing_service' element={<ProtectedRoute><Warehousing_service /></ProtectedRoute>} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/allusers' element={<Allusers/>} />
-        
-
-
-
+        <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path='/allusers' element={<ProtectedRoute><Allusers /></ProtectedRoute>} />
       </Routes>
-
       <Toaster />
     </Router>
   );
