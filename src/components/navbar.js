@@ -14,7 +14,7 @@ function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:4000/userroutes1/logout', {}, { withCredentials: true });
+      const response = await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/logout', {}, { withCredentials: true });
       Cookies.remove('token');
       toast.success(response.data.message || "Logout successful");
       window.location.reload();
