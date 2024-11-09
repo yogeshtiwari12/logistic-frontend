@@ -28,7 +28,7 @@ function AllUsers() {
   const handleDelete = async (userId) => {
     try {
 
-      await axios.delete(`http://localhost:4000/userroutes1/deleteuser/${userId}`, {
+      await axios.delete(`https://logistic-backend-mnqu.onrender.com/userroutes1/deleteuser/${userId}`, {
         withCredentials: true,
       });
 
