@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import shiplogo from './images/logo-removebg-preview.png';
@@ -14,10 +14,10 @@ function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/logout', {}, { withCredentials: true });
+      const response = await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/logout', { withCredentials: true });
       Cookies.remove('token');
       toast.success(response.data.message || "Logout successful");
-      window.location.reload();
+      setIsMenuOpen(false); 
       navigate('/login');
     } catch (error) {
       console.error('Logout failed:', error);
@@ -26,7 +26,11 @@ function Navbar() {
   };
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -57,14 +61,14 @@ function Navbar() {
                 </button>
                 <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300">
                   <ul className="py-2">
-                    <li><Link to="/fright" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Air Freight Service</Link></li>
-                    <li><Link to="/sea_fright_services" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Sea Freight Services</Link></li>
-                    <li><Link to="/train_fright_service" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Train Freight Service</Link></li>
-                    <li><Link to="/market_entry_service" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Market Entry Service</Link></li>
-                    <li><Link to="/export_premium_vehicle" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Export Premium Vehicle</Link></li>
-                    <li><Link to="/wine_export" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Wine Export Service</Link></li>
-                    <li><Link to="/project_cargo_services" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Project Cargo Services</Link></li>
-                    <li><Link to="/warehousing_service" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Warehousing Service</Link></li>
+                    <li><Link to="/fright" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Air Freight Service</Link></li>
+                    <li><Link to="/sea_fright_services" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Sea Freight Services</Link></li>
+                    <li><Link to="/train_fright_service" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Train Freight Service</Link></li>
+                    <li><Link to="/market_entry_service" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Market Entry Service</Link></li>
+                    <li><Link to="/export_premium_vehicle" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Export Premium Vehicle</Link></li>
+                    <li><Link to="/wine_export" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Wine Export Service</Link></li>
+                    <li><Link to="/project_cargo_services" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Project Cargo Services</Link></li>
+                    <li><Link to="/warehousing_service" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Warehousing Service</Link></li>
                   </ul>
                 </div>
               </li>
@@ -165,12 +169,12 @@ function Navbar() {
         <div className="lg:hidden absolute top-0 left-0 w-full bg-white shadow-lg z-50 p-6">
           <ul className="space-y-4">
             <li>
-              <Link to="/" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
+              <Link to="/" onClick={closeMenu} className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
+              <Link to="/about" onClick={closeMenu} className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                 About
               </Link>
             </li>
@@ -181,25 +185,25 @@ function Navbar() {
                 </button>
                 <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-0 transition-all duration-300">
                   <ul className="py-2">
-                    <li><Link to="/fright" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Air Freight Service</Link></li>
-                    <li><Link to="/sea_fright_services" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Sea Freight Services</Link></li>
-                    <li><Link to="/train_fright_service" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Train Freight Service</Link></li>
-                    <li><Link to="/market_entry_service" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Market Entry Service</Link></li>
-                    <li><Link to="/export_premium_vehicle" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Export Premium Vehicle</Link></li>
-                    <li><Link to="/wine_export" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Wine Export Service</Link></li>
-                    <li><Link to="/project_cargo_services" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Project Cargo Services</Link></li>
-                    <li><Link to="/warehousing_service" className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Warehousing Service</Link></li>
+                    <li><Link to="/fright" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Air Freight Service</Link></li>
+                    <li><Link to="/sea_fright_services" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Sea Freight Services</Link></li>
+                    <li><Link to="/train_fright_service" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Train Freight Service</Link></li>
+                    <li><Link to="/market_entry_service" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Market Entry Service</Link></li>
+                    <li><Link to="/export_premium_vehicle" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Export Premium Vehicle</Link></li>
+                    <li><Link to="/wine_export" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Wine Export Service</Link></li>
+                    <li><Link to="/project_cargo_services" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Project Cargo Services</Link></li>
+                    <li><Link to="/warehousing_service" onClick={closeMenu} className="block px-4 py-2 text-sm text-gray-800 hover:bg-blue-100">Warehousing Service</Link></li>
                   </ul>
                 </div>
               </li>
             )}
             <li>
-              <Link to="/tools" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
+              <Link to="/tools" onClick={closeMenu} className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                 Tools
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
+              <Link to="/contact" onClick={closeMenu} className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
                 Contact
               </Link>
             </li>
@@ -214,6 +218,7 @@ function Navbar() {
               ) : (
                 <Link
                   to="/login"
+                  onClick={closeMenu}
                   className="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition duration-300 ease-in-out"
                 >
                   Login
@@ -222,6 +227,7 @@ function Navbar() {
               {profile && profile.role === 'admin' && (
                 <Link
                   to="/allusers"
+                  onClick={closeMenu}
                   className="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700 transition duration-300 ease-in-out"
                 >
                   Dashboard
