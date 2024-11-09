@@ -14,16 +14,16 @@ function Navbar() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/logout', { withCredentials: true });
-      Cookies.remove('token');
-      toast.success(response.data.message || "Logout successful");
-      setIsMenuOpen(false); 
-      navigate('/login');
+        await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/logout');
+        Cookies.remove('token') // Remove the token on the client side
+        toast.success("Logout successful");
+        navigate('/login');
     } catch (error) {
-      console.error('Logout failed:', error);
-      toast.error(`Error logging out`);
+        console.error("Logout failed:", error);
+        toast.error("Error logging out");
     }
-  };
+};
+
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
