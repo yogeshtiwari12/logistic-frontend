@@ -12,17 +12,18 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
+const handleLogout = async () => {
     try {
-        await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/logout');
-        Cookies.remove('token') // Remove the token on the client side
-        toast.success("Logout successful");
-        navigate('/login');
+      const response = await axios.post('https://logistic-backend-mnqu.onrender.com/userroutes1/logout', { withCredentials: true });
+      Cookies.remove('token');
+      toast.success(response.data.message || "Logout successful");
+      setIsMenuOpen(false); 
+      navigate('/login');
     } catch (error) {
-        console.error("Logout failed:", error);
-        toast.error("Error logging out");
+      console.error('Logout failed:', error);
+      toast.error(`Error logging out`);
     }
-};
+  };
 
 
   const toggleMenu = () => {
