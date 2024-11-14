@@ -7,10 +7,12 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);  // Set loading state
 
     try {
       const response = await axios.post('http://localhost:4000/userroutes1/login', {
@@ -20,22 +22,25 @@ function Login() {
         withCredentials: true,
       });
 
-      if (response.status) {
+      if (response.status === 200) {
         toast.success(response.data.message || 'Login successful');
+        window.location.reload();
         
-        // Set a 3-second delay before navigation and page reload
         setTimeout(() => {
           navigate('/');
-          window.location.reload();
         }, 2000);
+      } else {
+        setError('Login failed. Please try again.');
       }
-      setEmail('');
-      setPassword('');
-      setError(null);
     } catch (err) {
-      toast.error(err.message);
       setError('Invalid credentials or error logging in.');
+      toast.error(err.response?.data?.message || 'An error occurred while logging in.');
+    } finally {
+      setIsLoading(false);  // Reset loading state
     }
+
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -71,9 +76,10 @@ function Login() {
           <div>
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 hover:scale-105 focus:outline focus:ring-2 focus:ring-blue-300 transition-transform duration-200"
+              className={`w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 hover:scale-105 focus:outline focus:ring-2 focus:ring-blue-300 transition-transform duration-200 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={isLoading}
             >
-              Login
+              {isLoading ? 'Logging in...' : 'Login'}
             </button>
           </div>
 

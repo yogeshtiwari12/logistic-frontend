@@ -9,7 +9,6 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
   const [error, setError] = useState(null);
- 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,19 +23,19 @@ function SignUp() {
       });
 
       if (response.status) {
-        toast.success(response.data.message || 'Signup successful');
+        toast.success(response.data.message || 'Sign-up successful');
         setName('');
         setEmail('');
         setPhone('');
         setPassword('');
         setRole('');
+        setError(null); // Reset the error state on successful signup
       }
-
-      setError(null);
     } catch (err) {
       console.error(err);
-      toast.error(err);
-      
+      const errorMessage = err.response?.data?.message || err.message || 'An error occurred during sign-up.';
+      setError(errorMessage);
+      toast.error(errorMessage); // Display error message
     }
   };
 

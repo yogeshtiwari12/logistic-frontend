@@ -6,19 +6,21 @@ import CeodeskPage from './ceodeskpage'
 import Card from './cardslider'
 import FAQ from './faq'
 import Footer from './footer'
+import Reqformdata from './reqformdata'
+
 
 
 
 
 function Home() {
   return (
-    <div>
+    <div className="bg-green-50">
       <Image_content/>
       <Aboutus/>
       <ExperienceDetails/>
       <CeodeskPage/>
       <Card/>
-      
+    <Reqformdata/>
       <FAQ/>
       <Footer/>
      

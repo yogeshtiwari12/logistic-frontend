@@ -17,6 +17,9 @@ import { Toaster } from 'react-hot-toast';
 import Profile from './components/pages/profile.js';
 import Allusers from './components/allusers.js';
 import { useAuth } from './components/context/context.js';
+import Dashboard from './components/pages/dashboarrd.js';
+import Ratereq_form from './components/pages/ratereq_form.js';
+
 
 const ProtectedRoute = ({ children }) => {
   const { profile } = useAuth();
@@ -47,6 +50,10 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path='/allusers' element={<ProtectedRoute><Allusers /></ProtectedRoute>} />
+        {/* <Route path='/ratereq' element={<RateExperienceForm/>} /> */}
+        {/* <Route path='/rateexp' element={<RateExperienceForm/>} /> */}
+        <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
+        <Route path='/users' element={<ProtectedRoute><Ratereq_form/></ProtectedRoute>} />
       </Routes>
       <Toaster />
     </Router>

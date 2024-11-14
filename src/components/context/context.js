@@ -14,11 +14,21 @@ export const AuthProvider = ({ children }) => {
                 const response = await axios.get('http://localhost:4000/userroutes1/getmyprofile', {
                     withCredentials: true,
                 });
-                console.log(response.data.user)
+                console.log(response.data.user);
                 setProfile(response.data.user);
             } catch (error) {
-                console.log("Error fetching profile:", error);
-                setError(error);
+                if (error.response) {
+                 
+                    console.error("Server Error:", error.response.data);
+                    setError(`Error: ${error.response.status} - ${error.response.data.message || "An unknown error occurred."}`);
+                } else if (error.request) {
+                    
+                    console.error("Network Error:", error.request);
+                    setError("Network error. Please check your connection.");
+                } else {
+                    console.error("Error:", error.message);
+                    setError("An unexpected error occurred.");
+                }
             } finally {
                 setLoading(false);  
             }
@@ -28,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ profile , loading, error }}>
+        <AuthContext.Provider value={{ profile, loading, error }}>
             {children}
         </AuthContext.Provider>
     );
