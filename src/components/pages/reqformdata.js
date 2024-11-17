@@ -34,7 +34,7 @@ function Reqformdata() {
     setLoading(true);
 
     try {
-      const response = await axios.put('http://localhost:4000/userroutes1/ratereq', submittedData, {
+      const response = await axios.put('https://logistic-backend-bx5m.onrender.com/userroutes1/ratereq', submittedData, {
         withCredentials: true,
       });
 
