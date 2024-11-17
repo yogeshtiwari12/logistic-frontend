@@ -1,7 +1,7 @@
 import React from "react";
-import doc from '../pages/doc34.docx'
+import kycform from '../pages/doc34.docx'
 function ContactPage() {
-  const brochureLink = doc; // Replace with actual path to the brochure
+  const brochureLink = kycform; // Replace with actual path to the brochure
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-6 sm:px-8 lg:px-16">
@@ -144,7 +144,7 @@ function ContactPage() {
                   d="M12 4v16m0-16l-3 3m3-3l3 3m-6 3h6"
                 />
               </svg>
-              Download Brochure
+              Download KYC Form
             </a>
           </div>
         </div>
