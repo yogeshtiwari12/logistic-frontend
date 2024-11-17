@@ -35,10 +35,10 @@ function FAQ() {
   return (
     <div className="bg-green-50 min-h-[500px] p-6"> {/* Decreased min-height */}
       <div className="container mx-auto p-6 bg-white border-2 border-green-500 rounded-lg pb-0">
-        <h2 className="text-3xl font-semibold text-center mb-6 text-blue-600">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-semibold text-center mb-6 text-blue-900">Frequently Asked Questions</h2>
         <div className="space-y-4 mb-4">
           {faqData.map((faq, index) => (
-            <div key={index} className="bg-blue-500 text-white p-5 rounded-lg shadow-md">
+            <div key={index} className="bg-blue-900 text-white p-5 rounded-lg shadow-md">
               <div
                 onClick={() => toggleAnswer(index)}
                 className="flex justify-between items-center cursor-pointer"

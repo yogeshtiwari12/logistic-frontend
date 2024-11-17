@@ -6,7 +6,7 @@ function ExperienceDetails() {
   return (
     <div className="flex justify-center items-center w-full bg-green-50 mb-0"> {/* Removed min-h-screen and adjusted margin */}
       <div className="w-full md:w-3/4 lg:w-1/2 space-y-6 text-center px-4">
-        <h2 className="text-3xl font-bold text-blue-700 mb-4">Our Experience</h2>
+        <h2 className="text-3xl font-bold text-blue-900 mb-4">Our Experience</h2>
 
         <div className="bg-white p-8 rounded-lg shadow-xl space-y-6 mx-auto">
           
