@@ -9,7 +9,7 @@ function RatereqForm() {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/userroutes1/reqdata');
+        const response = await axios.get('https://logistic-backend-bx5m.onrender.com/userroutes1/reqdata');
         console.log("data",response.data.requests)
         
         if (response.data && Array.isArray(response.data.requests)) {
