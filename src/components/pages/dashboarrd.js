@@ -68,15 +68,15 @@ function Dashboard() {
             onClick={() => handleTabClick('view-users')}
           >
             <FaUsers className="text-xl text-white" />
-            <span className="text-white">View Users</span>
+            <span className="text-white">View Request</span>
           </Link>
           <Link
-            to="#"
+            to="/clientdata"
             className="flex items-center space-x-2 w-full py-2 px-4 bg-[#003366] rounded-lg hover:bg-[#00509e] transition"
             onClick={() => handleTabClick('view-requests')}
           >
             <FaClipboardList className="text-xl text-white" />
-            <span className="text-white">View Requests</span>
+            <span className="text-white">Rate Request Data</span>
           </Link>
         </nav>
       </div>

@@ -5,14 +5,14 @@ function Aboutus() {
   return (
     <div className="p-6 bg-green-50 flext justify-content-around">
 
-      <h1 className="text-4xl font-extrabold px-10 text-center mb-10 text-green-700 ">About Us</h1>
+      <h1 className="text-4xl font-extrabold px-10 text-center mb-10 text-blue-700 ">About Us</h1>
       <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-12 space-y-8 md:space-y-0">
         <div className="w-full md:w-1/2 mb-6 md:mb-0">
           <img src={aboutImage} alt="About Us" className="w-full h-auto rounded-lg shadow-xl transform transition duration-500 hover:scale-105" />
         </div>
 
         <div className="w-full md:w-1/2 md:pl-12 h-">
-          <h2 className="text-3xl font-bold text-green-700 mb-4">U.S. Handle Worldwide Trade, LLC</h2>
+          <h2 className="text-3xl font-bold text-blue-700 mb-4">U.S. Handle Worldwide Trade, LLC</h2>
           
           <p className="text-lg text-gray-700 leading-relaxed tracking-wide">
             U.S. Handle Worldwide Trade, LLC serves as your trusted partner for seamless import and export logistics, empowering your supply chain with innovative solutions tailored to meet the demands of today's competitive global market.

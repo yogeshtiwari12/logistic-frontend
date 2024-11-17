@@ -108,6 +108,12 @@ function Navbar() {
                 Contact
               </Link>
             </li>
+
+            <li>
+              <Link to="/ratereqform" className="text-sm font-semibold text-gray-800 hover:text-red-500 transition-colors duration-300 ease-in-out">
+                Rate Request form
+              </Link>
+            </li>
           </ul>
         </div>
 

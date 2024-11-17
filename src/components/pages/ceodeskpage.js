@@ -5,7 +5,7 @@ function CeodeskPage() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 bg-green-50">
             {/* Page Heading */}
-            <h1 className="text-4xl font-semibold text-green-700 mb-4 text-center">
+            <h1 className="text-4xl font-semibold text-blue-700 mb-4 text-center">
                 From the Desk of CEO
             </h1>
 

@@ -6,7 +6,7 @@ function ExperienceDetails() {
   return (
     <div className="flex justify-center items-center w-full bg-green-50 mb-0"> {/* Removed min-h-screen and adjusted margin */}
       <div className="w-full md:w-3/4 lg:w-1/2 space-y-6 text-center px-4">
-        <h2 className="text-3xl font-bold text-green-700 mb-4">Our Experience</h2>
+        <h2 className="text-3xl font-bold text-blue-700 mb-4">Our Experience</h2>
 
         <div className="bg-white p-8 rounded-lg shadow-xl space-y-6 mx-auto">
           
@@ -24,7 +24,7 @@ function ExperienceDetails() {
               <FaClock className="text-2xl" />
             </div>
             <div className="text-lg text-gray-700 text-left">
-              <h3 className="font-semibold text-2xl">Years of Experience</h3>
+              <h3 className="font-semibold text-2xl">7   Years of Experience</h3>
               <p className="mt-2">Our team brings over two decades of expertise in the field, ensuring top-tier solutions for your business.</p>
             </div>
           </div>
@@ -34,7 +34,7 @@ function ExperienceDetails() {
               <FaBusinessTime className="text-2xl" />
             </div>
             <div className="text-lg text-gray-700 text-left">
-              <h3 className="font-semibold text-2xl">Years of Company Creation</h3>
+              <h3 className="font-semibold text-2xl">22  Years of Company Creation</h3>
               <p className="mt-2">Since the company's founding, we have been delivering high-quality services to businesses worldwide.</p>
             </div>
           </div>

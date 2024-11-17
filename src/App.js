@@ -19,6 +19,10 @@ import Allusers from './components/allusers.js';
 import { useAuth } from './components/context/context.js';
 import Dashboard from './components/pages/dashboarrd.js';
 import Ratereq_form from './components/pages/ratereq_form.js';
+import Ratereqform from './components/pages/ratereqform.js';
+import Saveratereqdata from './components/pages/saveratereqdata.js';
+import Saveratereq from './components/pages/saveratereqdata.js';
+import ContactPage from './components/pages/contact.js';
 
 
 const ProtectedRoute = ({ children }) => {
@@ -50,10 +54,14 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/profile' element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path='/allusers' element={<ProtectedRoute><Allusers /></ProtectedRoute>} />
-        {/* <Route path='/ratereq' element={<RateExperienceForm/>} /> */}
-        {/* <Route path='/rateexp' element={<RateExperienceForm/>} /> */}
+        
         <Route path='/dashboard' element={<ProtectedRoute><Dashboard/></ProtectedRoute>} />
         <Route path='/users' element={<ProtectedRoute><Ratereq_form/></ProtectedRoute>} />
+        <Route path='/clientdata' element={<Ratereqform/>} />
+        <Route path='/ratereqform' element={<Saveratereqdata/>} />
+        <Route path='/contact' element={<ContactPage/>} />
+
+        
       </Routes>
       <Toaster />
     </Router>
