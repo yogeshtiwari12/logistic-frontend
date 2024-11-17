@@ -52,7 +52,7 @@ const ClientBriefForm = () => {
     setSuccess(false);
 
     try {
-      const response = await axios.put("http://localhost:4000/userroutes1/saveclientbrief", formData, {
+      const response = await axios.put("https://logistic-backend-bx5m.onrender.com/userroutes1/saveclientbrief", formData, {
         headers: {
           'Content-Type': 'application/json'
         }
