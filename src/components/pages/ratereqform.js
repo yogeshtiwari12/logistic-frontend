@@ -15,7 +15,7 @@ function Ratereqform() {
         const fetchClientBriefs = async () => {
           try {
             setIsLoading(true);
-            const response = await axios.get("http://localhost:4000/userroutes1/allclientdata");
+            const response = await axios.get("https://logistic-backend-bx5m.onrender.com/userroutes1/allclientdata");
             setClientBriefs(response.data.clientbriefs);
             setError(null);
           } catch (err) {
